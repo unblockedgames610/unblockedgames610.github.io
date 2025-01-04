@@ -33,7 +33,7 @@ export function HomePage() {
       const scrollPosition = window.scrollY + window.innerHeight;
       const bottomPosition = document.documentElement.scrollHeight;
 
-      if (scrollPosition >= bottomPosition - 200) {
+      if (scrollPosition >= bottomPosition - 2100) {
         loadMoreGames();
       }
     };
