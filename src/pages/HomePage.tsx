@@ -9,82 +9,44 @@ import { TagsSection } from '../components/home/TagSection';
 import Footer from '../components/layout/Footer';
 
 export function HomePage() {
-  const [featuredGames, setFeaturedGames] = useState<Game[]>([]);
-  const [newGames, setNewGames] = useState<Game[]>([]);
+  const [games, setGames] = useState<Game[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
   const gamesPerPage = 20;
-  const initialLoadCount = 8;
 
-  const getFeaturedGames = useCallback(() => {
-    return gamesData
-      .filter(game => game.featured)
-      .slice(0, initialLoadCount);
-  }, []);
-
-  const getNewGames = useCallback(() => {
-    return [...gamesData]
-      .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
-      .slice(0, initialLoadCount);
-  }, []);
-
-  useEffect(() => {
-    setFeaturedGames(getFeaturedGames());
-    setNewGames(getNewGames());
-  }, [getFeaturedGames, getNewGames]);
-
+  // Load more games when scrolling
   const loadMoreGames = useCallback(() => {
-    if (loading) return;
+    if (loading) return; // Prevent multiple loads at the same time
 
     setLoading(true);
-    setTimeout(() => {
-      const nextPage = currentPage + 1;
-      const startIndex = initialLoadCount + (currentPage - 1) * gamesPerPage;
-      const endIndex = startIndex + gamesPerPage;
-
-      setFeaturedGames(prev => [
-        ...prev,
-        ...gamesData.filter(game => game.featured).slice(startIndex, endIndex)
-      ]);
-
-      setNewGames(prev => [
-        ...prev,
-        ...[...gamesData]
-          .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
-          .slice(startIndex, endIndex)
-      ]);
-
-      setCurrentPage(nextPage);
-      setLoading(false);
-    }, 100);
+    const nextPage = currentPage + 1;
+    const newGames = gamesData.slice(currentPage * gamesPerPage, nextPage * gamesPerPage);
+    setGames(prevGames => [...prevGames, ...newGames]);
+    setCurrentPage(nextPage);
+    setLoading(false);
   }, [currentPage, loading]);
 
+  // Detect if the user has scrolled to the bottom of the page
   useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '20px',
-      threshold: 0.1
-    };
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const bottomPosition = document.documentElement.scrollHeight;
 
-    const observer = new IntersectionObserver((entries) => {
-      const target = entries[0];
-      if (target.isIntersecting && !loading) {
+      if (scrollPosition >= bottomPosition - 200) {
         loadMoreGames();
       }
-    }, options);
-
-    const sentinel = document.getElementById('scroll-sentinel');
-    if (sentinel) {
-      observer.observe(sentinel);
-    }
-
-    return () => {
-      if (sentinel) {
-        observer.unobserve(sentinel);
-      }
     };
-  }, [loadMoreGames, loading]);
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [loadMoreGames]);
+
+  useEffect(() => {
+    loadMoreGames(); // Load the first batch of games
+  }, []); // Only run once when the component is mounted
 
   return (
     <>
@@ -92,21 +54,21 @@ export function HomePage() {
         <title>Unblocked Games - Play Educational Games Online</title>
         <meta name="description" content="Play free educational games online. Perfect for school breaks and learning!" />
         <meta name="keywords" content="unblocked games, educational games, online games, free games, play games, school games" />
-        
+        {/* Open Graph Tags */}
         <meta property="og:title" content="Unblocked Games - Play Educational Games Online" />
         <meta property="og:description" content="Play free educational games online. Perfect for school breaks and learning!" />
         <meta property="og:image" content="https://unblockedgames610.github.io/link-to-image.jpg" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
-        
+        {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Unblocked Games - Play Educational Games Online" />
         <meta name="twitter:description" content="Play free educational games online. Perfect for school breaks and learning!" />
         <meta name="twitter:image" content="https://unblockedgames610.github.io/link-to-image.jpg" />
-        
+        {/* Robots meta tag for better indexing */}
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={`${window.location.href}`} />
-        
+        {/* Schema Markup (Structured Data) */}
         <script type="application/ld+json">
           {`
             {
@@ -120,6 +82,8 @@ export function HomePage() {
             }
           `}
         </script>
+        <meta name="google-site-verification" content="Tx6ZacnVnvGQhXsWQxuphlBeTkJ2HQw9Fisx0s7QNXQ" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5152482106464455" crossOrigin="anonymous"></script>
       </Helmet>
 
       <Header />
@@ -136,14 +100,16 @@ export function HomePage() {
           <h2 className="text-2xl font-bold text-gray-800 mb-6">
             Featured Games
           </h2>
-          <GameGrid games={featuredGames} />
+          <GameGrid games={games} />
+          {loading && <div>Loading...</div>} {/* Show a loading indicator when games are being loaded */}
         </section>
 
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">
             New Games
           </h2>
-          <GameGrid games={newGames} />
+          <GameGrid games={games} />
+          {loading && <div>Loading...</div>} {/* Show a loading indicator when games are being loaded */}
         </section>
 
         <section className="mb-12">
@@ -152,21 +118,7 @@ export function HomePage() {
           </h2>
           <TagsSection />
         </section>
-
-        {/* Infinite scroll sentinel */}
-        <div 
-          id="scroll-sentinel" 
-          className="h-4 mb-8 flex justify-center items-center"
-        >
-          {loading && (
-            <div className="flex justify-center items-center space-x-2">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-              <span className="text-gray-600">Loading more games...</span>
-            </div>
-          )}
-        </div>
       </main>
-
       <Footer />
     </>
   );
