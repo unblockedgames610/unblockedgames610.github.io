@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Footer from '../components/layout/Footer';
 import { Header } from '../components/layout/Header';
@@ -14,6 +13,31 @@ const TermsOfService = () => {
         <meta property="og:description" content="Read our Terms of Service for Your Website Name. By using our services, you agree to abide by our terms and conditions. Learn more about your rights and obligations." />
         <meta property="og:url" content="https://unblockedgames610.github.io/terms-of-service" />
         <meta property="og:type" content="article" />
+        <link rel="canonical" href={`${window.location.href}`} />
+        <meta name="google-site-verification" content="Tx6ZacnVnvGQhXsWQxuphlBeTkJ2HQw9Fisx0s7QNXQ" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5152482106464455" crossOrigin="anonymous"></script>
+
+        {/* Schema Markup (Structured Data) */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Terms of Service - Your Website Name",
+              "url": "https://unblockedgames610.github.io/terms-of-service",
+              "description": "Read our Terms of Service for Your Website Name. By using our services, you agree to abide by our terms and conditions. Learn more about your rights and obligations.",
+              "publisher": {
+                "@type": "Organization",
+                "name": "Your Website Name",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://unblockedgames610.github.io/assets/logo.png"
+                }
+              },
+              "mainEntityOfPage": "https://unblockedgames610.github.io/terms-of-service"
+            }
+          `}
+        </script>
       </Helmet>
       
       <Header />

@@ -19,7 +19,7 @@ export function HotPage() {
         {/* Open Graph Tags */}
         <meta property="og:title" content="Hot Unblocked Games - Play Educational Games Online" />
         <meta property="og:description" content="Discover the hottest unblocked games online. Perfect for school breaks, fun, and learning!" />
-        <meta property="og:image" content="link-to-image.jpg" />
+        <meta property="og:image" content="https://unblockedgames610.github.io/link-to-image.jpg" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
         
@@ -27,11 +27,11 @@ export function HotPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Hot Unblocked Games - Play Educational Games Online" />
         <meta name="twitter:description" content="Discover the hottest unblocked games online. Perfect for school breaks, fun, and learning!" />
-        <meta name="twitter:image" content="link-to-image.jpg" />
+        <meta name="twitter:image" content="https://unblockedgames610.github.io/link-to-image.jpg" />
         
         {/* Robots meta tag for better indexing */}
         <meta name="robots" content="index, follow" />
-        
+        <link rel="canonical" href={`${window.location.href}`} />
         {/* Schema Markup (Structured Data) */}
         <script type="application/ld+json">
           {`
@@ -41,11 +41,13 @@ export function HotPage() {
               "name": "Hot Unblocked Games - Play Educational Games Online",
               "description": "Discover the hottest unblocked games online. Perfect for school breaks, fun, and learning!",
               "url": "${window.location.href}",
-              "image": "link-to-image.jpg",
+              "image": "https://unblockedgames610.github.io/link-to-image.jpg",
               "keywords": "hot unblocked games, educational games, online games, free games, play games"
             }
           `}
         </script>
+        <meta name="google-site-verification" content="Tx6ZacnVnvGQhXsWQxuphlBeTkJ2HQw9Fisx0s7QNXQ" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5152482106464455" crossOrigin="anonymous"></script>
       </Helmet>
 
       <Header />

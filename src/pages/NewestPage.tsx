@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Header } from '../components/layout/Header';
 import { GameGrid } from '../components/game/GameGrid';
@@ -18,7 +18,7 @@ export function NewestPage() {
         {/* Open Graph Tags */}
         <meta property="og:title" content="Newest Unblocked Games - Play Educational Games Online" />
         <meta property="og:description" content="Explore the newest unblocked educational games online. Perfect for school breaks, learning, and entertainment!" />
-        <meta property="og:image" content="link-to-image.jpg" />
+        <meta property="og:image" content="https://unblockedgames610.github.io/link-to-image.jpg" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
         
@@ -26,11 +26,11 @@ export function NewestPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Newest Unblocked Games - Play Educational Games Online" />
         <meta name="twitter:description" content="Explore the newest unblocked educational games online. Perfect for school breaks, learning, and entertainment!" />
-        <meta name="twitter:image" content="link-to-image.jpg" />
+        <meta name="twitter:image" content="https://unblockedgames610.github.io/link-to-image.jpg" />
         
         {/* Robots meta tag for better indexing */}
         <meta name="robots" content="index, follow" />
-        
+        <link rel="canonical" href={`${window.location.href}`} />
         {/* Schema Markup (Structured Data) */}
         <script type="application/ld+json">
           {`
@@ -40,11 +40,13 @@ export function NewestPage() {
               "name": "Newest Unblocked Games - Play Educational Games Online",
               "description": "Explore the newest unblocked educational games online. Perfect for school breaks, learning, and entertainment!",
               "url": "${window.location.href}",
-              "image": "link-to-image.jpg",
+              "image": "https://unblockedgames610.github.io/link-to-image.jpg",
               "keywords": "newest unblocked games, educational games, online games, new games, free games"
             }
           `}
         </script>
+        <meta name="google-site-verification" content="Tx6ZacnVnvGQhXsWQxuphlBeTkJ2HQw9Fisx0s7QNXQ" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5152482106464455" crossOrigin="anonymous"></script>
       </Helmet>
 
       <Header />

@@ -106,6 +106,8 @@ export function GameDetailPage() {
         <meta property="article:modified_time" content="2025-01-04" />
         <meta property="article:section" content={game.category} />
         <meta property="article:tag" content={game.tags} />
+        <meta name="google-site-verification" content="Tx6ZacnVnvGQhXsWQxuphlBeTkJ2HQw9Fisx0s7QNXQ" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5152482106464455" crossOrigin="anonymous"></script>
       </Helmet>
 
       {/* Structured Data */}

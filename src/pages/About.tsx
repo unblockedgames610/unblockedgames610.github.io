@@ -20,7 +20,7 @@ const About = () => {
           property="og:description"
           content="Learn more about our mission to provide the best unblocked games with easy access and engaging content for everyone."
         />
-        <meta property="og:image" content="link-to-image.jpg" />
+        <meta property="og:image" content="https://unblockedgames610.github.io/link-to-image.jpg" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
 
@@ -31,10 +31,14 @@ const About = () => {
           name="twitter:description"
           content="Learn more about our mission to provide the best unblocked games with easy access and engaging content for everyone."
         />
-        <meta name="twitter:image" content="link-to-image.jpg" />
+        <meta name="twitter:image" content="https://unblockedgames610.github.io/link-to-image.jpg" />
 
         {/* Robots meta tag */}
         <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`${window.location.href}`} />
+
+        <meta name="google-site-verification" content="Tx6ZacnVnvGQhXsWQxuphlBeTkJ2HQw9Fisx0s7QNXQ" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5152482106464455" crossOrigin="anonymous"></script>
       </Helmet>
 
       <Header />

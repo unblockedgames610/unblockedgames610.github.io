@@ -19,7 +19,7 @@ export function EditorPicksPage() {
         {/* Open Graph Tags */}
         <meta property="og:title" content="Editor Picks Unblocked Games - Play Educational Games Online" />
         <meta property="og:description" content="Discover the best unblocked games chosen by our editors. Perfect for school breaks, fun, and learning!" />
-        <meta property="og:image" content="link-to-image.jpg" />
+        <meta property="og:image" content="https://unblockedgames610.github.io/link-to-image.jpg" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
         
@@ -27,11 +27,11 @@ export function EditorPicksPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Editor Picks Unblocked Games - Play Educational Games Online" />
         <meta name="twitter:description" content="Discover the best unblocked games chosen by our editors. Perfect for school breaks, fun, and learning!" />
-        <meta name="twitter:image" content="link-to-image.jpg" />
+        <meta name="twitter:image" content="https://unblockedgames610.github.io/link-to-image.jpg" />
         
         {/* Robots meta tag for better indexing */}
         <meta name="robots" content="index, follow" />
-        
+        <link rel="canonical" href={`${window.location.href}`} />
         {/* Schema Markup (Structured Data) */}
         <script type="application/ld+json">
           {`
@@ -41,11 +41,13 @@ export function EditorPicksPage() {
               "name": "Editor Picks Unblocked Games - Play Educational Games Online",
               "description": "Discover the best unblocked games chosen by our editors. Perfect for school breaks, fun, and learning!",
               "url": "${window.location.href}",
-              "image": "link-to-image.jpg",
+              "image": "https://unblockedgames610.github.io/link-to-image.jpg",
               "keywords": "editor picks games, best unblocked games, educational games, online games, fun learning, school break games"
             }
           `}
         </script>
+        <meta name="google-site-verification" content="Tx6ZacnVnvGQhXsWQxuphlBeTkJ2HQw9Fisx0s7QNXQ" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5152482106464455" crossOrigin="anonymous"></script>
       </Helmet>
 
       <Header />
