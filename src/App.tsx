@@ -1,8 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { HomePage } from './pages/HomePage';
 import { GameDetailPage } from './pages/GameDetailPage';
-import React from 'react';
 import { CategoryPage } from './pages/CategoryPage';
 import { TagPage } from './pages/TagPage';
 import { HotPage } from './pages/HotPage';
