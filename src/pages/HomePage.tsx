@@ -75,15 +75,7 @@ export function HomePage() {
         {/* Robots meta tag */}
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={`${window.location.href}`} />
-        <meta
-          name="google-site-verification"
-          content="Tx6ZacnVnvGQhXsWQxuphlBeTkJ2HQw9Fisx0s7QNXQ"
-        />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5152482106464455"
-          crossOrigin="anonymous"
-        ></script>
+        
         {/* Schema Markup (Structured Data) */}
         <script type="application/ld+json">
           {`
